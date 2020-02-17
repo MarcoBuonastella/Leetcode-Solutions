@@ -1,0 +1,51 @@
+mergesort(arr,l,r){
+   if(l < r){
+	m = (l + r) / 2
+	mergesort(arr,l,m)
+	mergesort(arr,m+1,r)
+	merge(arr,l,r,m)
+    }
+}
+
+merge (arr,l,r,m)
+
+ arr_left = new array of size m - l + 1 (n1)
+ arr_right = new array size r - m (n2)
+
+ 
+ temp1 = l;
+ temp2 = m+1;
+ 
+ for i = 0 ... n1:
+    arr_left[i] = arr[temp1]
+    temp1++;
+
+ for j = 0 ... n2:
+    arr_right[j] = arr[temp2]
+    temp2++;
+
+ i = 0; j = 0;k=l;
+ while(i < n1 && j < n2)  
+     if(arr_left[i] <= arr_right[j]){
+	arr[k] = arr_left[i]
+        i++;
+     }
+     else{
+        arr[k] = arr_right[j]
+        j++;
+     }
+     k++;
+	
+
+ while(i < n1){
+     arr[k] = arr_left[i]
+     i++;
+     k++;
+}
+
+ while(j < n1){
+     arr[k] = arr_right[j]
+     j++;
+     k++;
+}	
+

@@ -1,0 +1,20 @@
+quicksort(arr, low, high){
+if(low < high){
+      pi = partition(arr,low,high)
+      quicksort(arr,low,pi-1);
+      quicksort(arr,pi+1,high)
+}
+}
+
+partition(arr,low,high){
+   piv = arr[high]
+   i = 0
+   for(j = 0 ... high - 1){
+	if(arr[j] < pivot){
+	      swap(arr[i],arr[j])	
+              i++;
+	}  
+    }
+    swap(arr[i+1],arr[high])
+    return i+1;
+}

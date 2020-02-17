@@ -1,0 +1,29 @@
+//find the number of paths that sum to a given value
+
+//idea/brute force method is calculate the sum between every pair of node 
+
+int countSums(Node* root, int sum){
+    int numPaths = 0;
+    return countSumsHelper(root,sum,&numPaths,0);	 
+}
+
+void countSumsHelper(Node* n, int sum, int& numPaths, int sumSoFar){
+  
+	if(sumSoFar == sum){numPaths++;}
+	
+	if(n!=nullptr){
+ 	        countSumsHelper(n->left,sum,numPaths,0);
+        	countSumsHelper(n->right,sum,numPaths,0);
+        	countSumsHelper(n->left,sum,numPaths,sumSoFar + n->val);
+        	countSumsHelper(n->right,sum,numPaths,sumSoFar + n->val);
+	}
+   }
+}
+
+
+int countSumsHelper(Node* n, int sum, int& numPaths){
+  
+	if(n == nullptr){return 0;}
+	if(countSumsHelper(n->left
+   }
+}

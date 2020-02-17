@@ -1,0 +1,41 @@
+//keep track of difference between left and right, if it ever > 1 or < -1 return false
+
+bool checkBalance(Node* root){
+    return checkBalanceHelper(root,0)
+}
+
+bool checkBalanceHelper(Node* n, int balance){
+	if(n == nullptr){
+	     return true;
+        }
+        if(balance < -1 || balance > 1){
+		return false;
+        }
+        if(n->left && !n->right){
+		balance--;
+	}
+	else if(!n->left && n->right){
+		balance++;
+        }
+        return checkBalanceHelper(n->left, balance) && checkBalanceHelper(n->right, balance);
+}
+
+
+
+
+int getHeight(Node* n){
+    if(n == nullptr){
+	return 0;
+    }
+    else return max(getHeight(n->left),getHeight(n->right) + 1
+
+
+
+bool checkBalance(Node* n){
+	if(n == nullptr){return true;}
+        else{
+	     if(Math.abs(getHeight(n->left) - getHeight(n->right)) > 1){
+		return false;
+	     }
+	     return checkBalance(n->left) && checkBalance(n->right);
+        }

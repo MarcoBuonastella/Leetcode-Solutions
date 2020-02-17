@@ -1,0 +1,65 @@
+//General Idea: for each node, find all possible sequences of its left nand right subtree,
+//and then append it to the front of eaach one of those sequences
+
+
+//we will need 2 things: 
+//1) recursive algorithm that builds the sequences using base cases
+//2) algorithm for permuting all sequences
+
+//basically you have this master array containing all of the array
+
+
+vector<<vector<int>> findSeqs(Node* n){
+	vector<<vector<int>> result;
+
+	if(n == nullptr){return result;}
+
+	//otherwise, get the vector of the left and right subtrees, permute them, add to the front of both
+        
+else{
+		vector<int> prefix = new vector<int>(n->val);
+		vector<<vector<int>> leftSeqs = findSeqs(n->left);
+		vector<<vector<int>> rightSeqs = findSeqs(n->right);
+		for i = 0 ... leftSeqs.size()
+		    for j = 0... rightSeqs.size()
+			vector<vector<int>> weaved;
+			weaveVectors(leftSeqs[i], rightSeqs[j], prefex, result);
+			for i = 0 ... weaved.size()
+				result.push_back(weaved[i]);
+		
+	}
+}
+
+void weaveVectors(vector<int> left, vector<int> right, vector<int> prefix, vector<vector<int> results){
+	
+	//when you reach the end of either left or right, append what you have with left and right (one will be empty) so you will
+	//end up appending the remainder of the other list
+
+	if(left.size() == 0 || right.size() == 0){
+		for(i = 0 ... left.size())
+			prefix.push_back(left[i]);
+		for(j = 0 ... right.size())
+			prefix.push_back(right[j]);
+		results.push_back(prefix);
+		return;
+	}
+
+	int temp = left[0];
+	left.remove(left.begin());
+	prefix.push_back(temp)
+	weaveVectors(left,right,prefix,results);
+	left.insert(left.begin(), temp)
+
+	temp = right[0];
+	right.remove(right.begin());
+	prefix.push_back(temp)
+	weaveVectors(left,right,prefix,results);
+	right.insert(right.begin(), temp)
+
+}
+
+	
+	
+
+
+

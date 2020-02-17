@@ -1,0 +1,41 @@
+//find first common ancestor of 2 nodes without string extra data
+//do not assume it is a binary search tree
+
+//a common ancestor is a node that is in the line of parents from the node
+//so if you hav 2 node, and traversed them upwards to the root, it would be the first node that
+//overlap
+
+
+		6
+	4		1
+    5       7       8
+0       3 
+    1
+
+
+
+so for example, answer for (1,7) is 4
+
+//if you WERE allowed to store extra data structure
+
+//one idea is that a node is a common ancestor if you can search and find both the nodes starting
+//with that ancestor node
+
+//assume you have function BTSearch(node, val) which returns true val if found, false otherwise
+
+
+Node* findFirstAncestor(Node*n1, Node*n2, Node* root){
+      Node* ancestor = nullptr;
+      findFirstAncestorHelper(root, n1->val, n2->val, ancestor);
+      return ancestor;
+}
+
+void findFirstAncestorHelper(Node* n, int val1, int val2, Node* ancestor){
+	if(BTSearch(n,val1) && BTSearc(n,val2){
+		*ancestor = *n;	
+		findFirstAncestorHelper(n->left,ancestor));
+		findFirstAncestorHelper(n->right,ancestor);
+	}
+}
+			
+

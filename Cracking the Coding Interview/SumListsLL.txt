@@ -1,0 +1,41 @@
+Node* SumLists(Node* n1, Node*n2){
+	Node* result = nullptr;
+	Node* resultIT = nullptr;
+	int carryOver = 0;
+	while(n1!= nullptr || n2 != nullptr){
+	 int result = 0;    
+	 if(n1 && n2){
+ 	     result = n1->val + n2->val + carryOver;
+	     n1 = n1->next;
+	     n2 = n2->next;
+	 }
+	 else if(n1){
+	     result = n1->val + carryOver;
+	     n1 = n1->next;
+	 }
+	 else{
+	     result = n2->val + carryOver;
+	     n2 = n2->next; 
+	 }
+	 Node* newNode = new Node(result % 10);
+         if(result == nullptr){
+		result = newNode;
+		resultIt = newNode;
+         }
+	 else{
+		resultIT->next = newNode;
+		resultIT = resultIT->next;
+	 }
+	 if(result > 9){
+		carryOver = 1;
+	 }
+	 else{
+		carryoVER = 0;
+	 }
+	}
+	if(carryOver == 1){
+	   resultIT->next = new Node(1);
+	}
+	return result;
+}   
+	 

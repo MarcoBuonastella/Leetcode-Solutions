@@ -1,0 +1,22 @@
+//idea is to perform a breadth-first-search from node start
+//if they want us to find the path, we store a map, where we store <node,incoming neighbour node>
+//pairs, so that then we can simply iterate through the map from the destination, going backwards along the path
+until we reach the start, we can even push items on a stack when we do this, so that our output is a stack of 
+direction in order.
+
+bool findRoute(Node* start, Node *end){
+	if(node == null){return false;}
+	Queue q = new Queue();
+        q.enqueue(start);
+
+	while(!q.isempty()){
+	    Node *t = q.dequeue();
+            if(*t == *end){return true;}
+            if(!t.visited){
+		for each negihbour n of t:
+	             q.enqueue(n);
+                t.visited = true;
+        }
+        return false;
+}
+  

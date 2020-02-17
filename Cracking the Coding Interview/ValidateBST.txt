@@ -1,0 +1,19 @@
+//must have property that anything on left is smaller and anything on the right is bigger
+//keep track of largest and smallest seen so far, raneg of possible values
+
+
+bool validateBST(Node* root){
+	return validateBSTHelper(n,INT_MIN, INT_MAX);
+}
+
+bool validateBSTHelper(Node* n, int smallest, int largest){
+	if(n == nullptr){
+		return true;
+        }
+        if(n->val > smallest && < largest){
+		return validateBSTHelper(n->left,smallest,n->val) && validateBSTHelper(n->right,n->val,largest)
+	}
+	else{
+		return false;
+	}
+}

@@ -1,0 +1,23 @@
+
+string compress(string s1){
+    string s2 = "";
+    int currCount = 0;
+    char currChar = '';
+    
+    for(int i = 0; i < s1.length(); i++){
+    	if(s1[i]!=currChar){
+	    if(currCount > 0){
+	       s2 += currChar + intToString(currCount);
+	    }
+            currCount = 1;
+            currChar = s1[i];
+	}
+	else{
+	   currCount++;
+	}	
+    }
+    if(s2.length >= s1.length){
+        return s1;
+    }
+    return s2;
+}

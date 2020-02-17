@@ -1,0 +1,39 @@
+//idea
+
+need to balance the likelyhood of selecting a node by its level since it it less likely to go farther down the tree
+if a node is at level i and there is a 50% chance of going down each subtree, then the node at level i have a 0.5^i chance of being selected
+Ex:
+
+		1
+       2               3
+
+
+method 1: we could simply perform a pre-order traversal store all the elements in an array and then choose one at random
+method 2: we could do a pre-order traversal, count the # of nodes in the tree, then select a number from 1-size of tree, and then do another traversal where
+we count each recursive call and stop when we reach counter = number selected
+
+int selectRandom(Node* n){
+	int numNodes = traverseTree(n);
+	int output = -1;
+	return selectRandomHelper(n,numNodes,output);
+}
+
+int traverseTree(Node* n){
+	if(n == nullptr){ return 0;}
+	else{
+	    return 1 + traverseTree(n->left) + traverseTree(n->right);
+	}
+}
+
+
+void selectRandomHelper(Node* n, int &counter,output){
+     if(n == nullptr){}
+     else if(counter == 0){
+	*output = n->val;
+	return;
+     } 
+     else{
+	counter--;
+	selectRandomHelper(n->left,counter,output);
+        selectRandomHelper(n->right,counter,output);
+}

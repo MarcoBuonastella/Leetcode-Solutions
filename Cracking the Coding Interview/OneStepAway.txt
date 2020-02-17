@@ -1,0 +1,36 @@
+bool isOneStepAway(string s1, string s2){
+	int maxLen  = max(s1.length(), s2.length());
+	int diffCounter = 0;
+	int i,j = 0;
+	while(i < s1.length() || j < s2.length()){
+	    if(i >= s1.length()){
+		 j++;
+		 diffCounter++;
+	    }
+	    else if(j >= s2.length()){
+		i++;
+		diffCounter++;
+	    }     
+	    else if(s1[i] != s2[j]){
+		 if(s1.length() > s2.length()){
+		     i++;
+		 }
+		 else if(s1.length() < s2.length()){
+		     j++;
+		 }
+		 else{
+		     i++;
+   		     j++;
+		 }
+		 diffCounter++;
+	     }
+	    else{
+		i++;
+		j++;
+	    }
+	}
+	if(diffCounter > 1){
+	    return false;
+	}
+	return true;
+}

@@ -1,0 +1,20 @@
+void removeDups(Node* front){
+
+	unordered_map<int,int> map;
+	Node* prev nullptr;
+	Node* curr = front;
+	while(curr!=nullptr){
+	    if(map.count(curr->val) > 0){
+		 temp = curr;
+	         prev->next = curr->next;
+		 curr = curr->next;
+		 delete temp;
+	    }
+	    else{
+		map.insert(std::pair<int,int>(curr->val,1);
+                prev = curr;
+		curr = curr->next;
+	    }
+	}
+
+}

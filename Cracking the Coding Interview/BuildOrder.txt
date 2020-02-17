@@ -1,0 +1,34 @@
+//given list of projects and <proj,proj> pairs where second item must 
+//be executed before the first of the pair
+
+//idea 1: simply make a dependancy graph and traverse it
+//have a map storing all projects which have a dependancy <proj,dep proj> pairs
+
+void buildOrder(vector<char> projs, vector<pair<char,char>> depnds){
+	unorder_map<char,queue<char>> map;
+	for auto d:depends
+	    if(map.count(d.second) < 1){
+		map.insert(std::pair<char,queue<char>>(d.second,vector<char>(d.first));
+            }
+	    else{
+		map[d.second].enqueue(d.first);	
+	    }
+	    
+        Queue<char> q;
+	for(int i = 0; i < projs.size(); i++){
+		if(map.count(projs[i]) < 1){
+			q.enqueue(projs[i]);
+ 		}
+	}
+	while(!q.empty){
+	    char c = q.front();
+	    q.dequeue();
+	    while(map.count(c) > 1){
+		q.enqueue(map[c].front();
+		map[c].dequeue();
+		if(map[c].size() == 0){
+	 	    map.remove(c);
+		}
+	    }
+        }	
+}

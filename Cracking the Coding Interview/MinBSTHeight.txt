@@ -1,0 +1,16 @@
+//idea is that to find a tree with minimal height, we want it to be as balanced as possible
+//we can therefore assign left and right children as the recrusive midpoints
+
+
+Node* minBST(vector<int> v, int start, int end){
+   if(start < end){ 
+       int mid = (end - start)/2 - 1
+       Node* n = new Node(v[mid]);
+       n->left = minBST(&v,start,mid-1);
+       n->right = minBST(&v,mid + 1, end);
+       return n;
+   }
+   else{
+	return nullptr;
+   }
+}

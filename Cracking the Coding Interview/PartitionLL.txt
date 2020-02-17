@@ -1,0 +1,41 @@
+Node* partition(Node* head, int v){
+	
+	Node* left = nullptr;
+	Node* right = nullptr;
+	Node* right_head = nullptr;
+	Node* iterator = head;
+	Node* partitionHead;
+
+	while(iterator != nullptr){
+	     Node* temp = iterator->next;
+	     if(iterator->val < v){
+		 if(left == nullptr){
+		        partitionHead = iterator;
+			left = iterator;
+		 }
+		 else{
+			left->next = iterator;
+			left = left->next;
+		 }
+	     }
+	     else{
+                 if(right == nullptr){
+			right_head = iterator;
+			right = iterator;
+		 }
+		 else{
+			right->next = iterator;
+			right = left->next;
+		 }	
+             }
+	     iterator = temp;
+  	}
+	if(partitionHead != nullptr){
+		left->next = right_head;
+		return (partitionHead;
+	}
+	else{
+		return right_head;
+	}	
+	
+}

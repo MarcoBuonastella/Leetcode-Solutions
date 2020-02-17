@@ -1,0 +1,47 @@
+//in order successor is the next largest element in the tree
+
+
+		10
+      8		         13
+5	    9       11       17
+
+
+//method 1: perform in-order traversal of tree, store in ana array, this will result 
+// in a sorted array, so now simpy find the value in the array, successor will be next to the right
+
+Node* findSuccessor(Node *n){
+     if(n->parent == nullptr){return n;}
+     else{
+	return findSuccessor(n->parent);
+     }
+}
+
+Node* findSuccessor(Node *n){
+     if(n->parent == nullptr){return n;}
+     else{
+	return findSuccessor(n->parent);
+     }
+}
+
+//method 2: we are looking for the left-most node in the right subtree
+// if node dosen't have a right subtree, we go to parent util the parent is a left
+child of its parent, we then stop and return the parent
+// if node has a right child, we find the left-most node of its right subtree
+
+Node* getLeftMost(Node*n){
+ 
+   if(n == nullptr){return n->parent;}
+   else{
+      return getLeftMost(n->left);
+   }
+
+
+Node* val(Node* n){
+   if(n == nullptr){return nullptr;}
+   if(n->right){return getLeftMost(n->right);
+   else{
+       while(n->parent != nullptr && n->parent->left!= n){
+	   n = n->parent;
+       }
+       return n->parent;
+}

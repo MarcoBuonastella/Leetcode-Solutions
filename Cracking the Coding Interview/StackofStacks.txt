@@ -1,0 +1,26 @@
+StackofStacks{
+	vector<Stack> stacks;
+	int maxStackSize = max;
+
+	Void popAt(int index){
+	    if(index == stacks.size() - 1){
+	        stacks[index].pop(); 
+	    }
+	    else{
+		stacks[index].pop();
+		stack<int> temp;
+		while(!stacks[index + 1].empty())){
+		     temp.push(stacks[index + 1].top());
+		     stacks[index + 1].pop();
+		}
+		stacks[index].push(temp.top());
+		temp.pop();
+		while(!temp.empty())){
+		     stacks[index + 1].push(temp.top());
+		     temp.pop();
+		}
+		popAt(index + 1);
+	    }    	   
+	}
+	
+}

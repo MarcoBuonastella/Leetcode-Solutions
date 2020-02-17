@@ -1,0 +1,35 @@
+//Idea
+
+//traverse T1 until we find root of T2.
+//then traverse both trees at the same time and if the nodes ever differ then its not a subtree, otherwise it is
+
+
+bool isSubtree(Node* t1, Node*t2){
+	Node* start = nullptr;
+	findT2Root(t1,t2,start);
+	if(start == nullptr){return false;}
+	return 
+}
+
+bool isSubtreeHelper(Node*t1, Node*t2){
+        
+	if(t1 && !t2 || !t1 && t2 || t1-val != t2.val){return false;}
+	else {
+		return isSubtreeHelper(t1->left,t2->left) && isSubtreeHelper(t1->right,t2->right);
+	}
+	
+}
+
+
+void findT2Root(Node* n, Node* T2Root, Node* start){
+	if(n->val == T2Root->val){
+	    *start = *n;
+            return;   
+	}
+	else if(n->val > T2Root->val){
+		findT2Root(n->left,T2Root,start);
+	}
+	else{
+	 	findT2Root(n->right,T2Root,start);      
+	}
+}

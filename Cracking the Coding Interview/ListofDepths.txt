@@ -1,0 +1,26 @@
+//idea is to traverse the tree in pre-order-traversal (dosen't really matter) and pass a parameter called
+//height, which is incremented at each recurcise call ie when we go to the next level, we then add the node to the
+//linked list structure in list index height.
+
+Node* listOfDepths(Node* root){
+	vector<Node*> linkedLists;
+        listOfDepthsHelper(linkedLists, root,0);
+        return linkedLists;
+}
+
+void listOfDepthsHelper(vector<Node*> &v, Node* n, int height){
+	if(v.size() < height){
+	    v.push_back(n); 
+	}
+	else{
+            Node* temp = v[height]; 
+            while(temp->next != nullptr){
+		temp = temp->next; 
+            }
+            temp->next = n; 
+	}
+       if(n!=null){
+        	listOfDepthsHelper(v, n->left, height + 1); 
+		listOfDepthsHelper(v, n->right, height + 1);
+       }  
+}
